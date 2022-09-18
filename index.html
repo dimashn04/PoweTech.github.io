@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerTech</title>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Barlow|Tomorrow:400,700&display=swap");
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Tomorrow, sans-serif;
+            background-color: white;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .clear {
+            clear: left;
+        }
+
+        .container {
+            max-width: 1170px;
+            width: 100%;
+            padding: 0 15px;
+            margin: 0 auto;
+        }
+
+        .container-top {
+            max-width: 1170px;
+            width: 50%;
+            padding: 0 15px;
+            margin: 0 auto;
+            position: absolute;
+            color: black;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(243, 230, 0, 0.5)
+        }
+
+        .top-wrapper {
+            padding: 100px 0 100px 0;
+            background-size: cover;
+            color: white;
+            text-align: center;
+        }
+
+        .top-wrapper h1 {
+            opacity: 0.7;
+            font-size: 45px;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+
+        .top-wrapper p {
+            opacity: 0.7;
+            margin-bottom: 3px;
+        }
+
+        .btn-wrapper {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .btn-wrapper p {
+            margin: 10px 0;
+        }
+
+        .signup {
+            background-color: #239b76;
+            margin-right: 10px;
+            box-shadow: 0 7px #076b4c;
+        }
+
+        .signup:active {
+            position: relative;
+            top: 7px;
+            box-shadow: none;
+        }
+
+        .discord {
+            background-color: #3b5998;
+            margin-right: 10px;
+            box-shadow: 0 7px #2f5394;
+        }
+
+        .discord:active {
+            position: relative;
+            top: 7px;
+            box-shadow: none;
+        }
+
+        .twitter {
+            background-color: #55acee;
+            margin-left: 10px;
+            box-shadow: 0 7px #349ded;
+        }
+
+        .twitter:active {
+            position: relative;
+            top: 7px;
+            box-shadow: none;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            color: white;
+            display: inline-block;
+            opacity: 0.8;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            opacity: 1;
+        }
+
+        .fab {
+            margin-right: 5px;
+        }
+
+        .fa {
+            margin-right: 5px;
+        }
+
+        iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            transform: translate(-50%, -50%);
+        }
+
+        .vid-container {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        @media (min-aspect-ratio: 16/9) {
+            .vid-container iframe {
+                height: 56.25vw;
+            }
+        }
+
+        @media (max-aspect-ratio: 16/9) {
+            .vid-container iframe {
+                width: 177.78vh;
+            }
+
+            .discord {
+                margin: 0 auto;
+                width: 50%;
+                margin-bottom: 20px;
+            }
+
+            .twitter {
+                margin: 0 auto;
+                width: 50%;
+                margin-bottom: 20px;
+            }
+
+        }
+
+        header {
+            height: 65px;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            position: fixed;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            width: 124px;
+            margin-top: 12px;
+        }
+
+        .header-left {
+            float: left;
+        }
+
+        .header-right {
+            float: right;
+            margin-right: -25px;
+        }
+
+        .header-right a {
+            line-height: 65px;
+            padding: 0 25px;
+            color: white;
+            display: block;
+            float: left;
+            transition: all 0.5s;
+        }
+
+        .header-right a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .menu-icon {
+            color: white;
+            float: right;
+            font-size: 25px;
+            padding: 21px 0;
+            display: none;
+        }
+
+        .choice-icon {
+            position: relative;
+            width: 100%;
+        }
+
+        .header-right a.active {
+            background-color: rgba(243, 231, 0);
+            color: black;
+        }
+
+        .header-right a.active:hover {
+            background-color: rgba(240, 235, 146);
+        }
+
+        .header-right a.fa {
+            background-color: rgba(243, 231, 0);
+            color: black;
+        }
+
+        .header-right a.fa:hover {
+            background-color: rgba(240, 235, 146);
+        }
+
+        .heading-text {
+            float: left;
+        }
+
+        .subheading span {
+            background-color: yellow;
+            padding-right: 15px;
+            padding-left: 15px;
+            font-size: 40px;
+        }
+
+        .icon-container span {
+            background-color: black;
+            padding-right: 15px;
+            padding-left: 15px;
+            font-size: 25px;
+        }
+
+        .icon-container {
+            float: left;
+            background-color: black;
+        }
+
+        .icon-container p {
+            color: white;
+        }
+
+        .choice-wrapper {
+            text-align: center;
+            padding-top: 80px;
+            padding-bottom: 100px;
+        }
+
+        .choice {
+            width: 25%;
+            float: left;
+        }
+
+        .text-contents {
+            width: 80%;
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        .highlight-wrapper {
+            padding-bottom: 100px;
+            width: 100%;
+        }
+
+        .highlight {
+            width: 25%;
+            float: left;
+            background-color: #F5F5F5;
+            border-radius: 8px;
+            padding: 0 20px;
+            padding-bottom: 20px;
+            position: relative;
+        }
+
+        .highlight-icon {
+            display: inline-block;
+        }
+
+        .highlight-title {
+            text-align: center;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .price-start {
+            text-align: center;
+            font-size: small;
+            border-top: 1px solid yellow;
+            padding-top: 20px;
+        }
+
+        .price-after {
+            text-align: center;
+            color: red;
+        }
+
+        .price-before {
+            text-align: center;
+            font-size: small;
+        }
+
+        .price-save {
+            text-align: center;
+            font-size: small;
+            color: red;
+            border-bottom: 1px solid yellow;
+            padding-bottom: 20px;
+        }
+
+        .specification-list {
+            font-weight: normal;
+            padding-bottom: 20px;
+            padding-top: 20px;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .buy {
+            padding: 15px 40px;
+            background-color: yellow;
+            cursor: pointer;
+            color: black;
+            box-shadow: 0 5px rgb(92, 92, 92);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .buy:active {
+            position: relative;
+            top: 5px;
+            box-shadow: none;
+        }
+
+        .learn {
+            padding: 15px 40px;
+            background-color: rgb(92, 92, 92);
+            cursor: pointer;
+            color: white;
+            box-shadow: 0 5px yellow;
+            display: block;
+        }
+
+        .learn:active {
+            position: relative;
+            top: 5px;
+            box-shadow: none;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .footer {
+            background-color: yellow;
+            padding: 20px;
+
+        }
+
+        .footer-coloumn ul li a {
+            font-size: 22px;
+            text-transform: capitalize;
+            color: yellow;
+            font-weight: 200;
+            color: black;
+        }
+
+        .footer-coloumn ul li a:hover {
+            padding-left: 10px;
+            color: rgb(92, 92, 92);
+
+        }
+
+        .footer-coloumn li {
+            list-style: none;
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        .footer-coloumn .social-link a {
+            display: inline-block;
+            line-height: 40px;
+            height: 40px;
+            width: 40px;
+            background-color: rgb(92, 92, 92);
+            margin: 0 10px 0;
+            text-align: center;
+            ;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .footer-coloumn {
+            width: 25%;
+            padding: 0 15px;
+            float: left;
+            padding-bottom: 20px;
+        }
+
+        .footer-coloumn-soc {
+            width: 25%;
+            padding: 0 15px;
+            float: left;
+            padding-top: 20px;
+        }
+
+        .choices-text span {
+            padding: 15px 40px;
+            background-color: rgb(92, 92, 92);
+            cursor: pointer;
+            color: white;
+            box-shadow: 0 5px yellow;
+            display: block;
+        }
+
+        .choices-text:active {
+            position: relative;
+            top: 5px;
+            box-shadow: none;
+        }
+
+        @media all and (max-width: 1000px) {
+            .choice {
+                width: 50%;
+                margin-bottom: 50px;
+            }
+
+            .top-wrapper h1 {
+                font-size: 32px;
+            }
+
+            .heading h2 {
+                font-size: 20px;
+            }
+
+            .highlight {
+                width: 50%;
+                margin-bottom: 50px;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        /* For Smartphones */
+        @media all and (max-width: 670px) {
+            .choice {
+                width: 100%;
+            }
+
+            iframe {
+                max-width: 100%;
+            }
+
+            footer {
+                text-align: center;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .facebook {
+                margin-bottom: 10px;
+            }
+
+            .top-wrapper {
+                text-align: left;
+            }
+
+            /* Add CSS for header-right */
+            .header-right {
+                display: none;
+            }
+
+            /* Add CSS for menu-icon */
+            .menu-icon {
+                display: block;
+            }
+
+            .top-wrapper h1 {
+                font-size: 24px;
+                line-height: 36px;
+            }
+
+            .top-wrapper p {
+                font-size: 14px;
+                line-height: 20px;
+            }
+
+            .highlight {
+                width: 100%;
+            }
+
+            .footer-coloumn {
+                width: 100%;
+            }
+
+            .social-link {
+                margin: 0 auto;
+            }
+
+            .social-link li {
+                float: left;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-left">
+                <img class="logo" src="https://i.imgur.com/ji9at8t.png">
+            </div>
+            <span class="fa fa-bars menu-icon"></span>
+
+            <div class="header-right">
+                <a class="active" href="#">Home</a>
+                <a href="#">Products</a>
+                <a href="#">Sign in</a>
+                <a href="#" class="login">Log in</a>
+                <a href="#">Support</a>
+                <a href="#" class="fa fa-search"></a>
+                <a href="#" class="fa fa-shopping-cart"></a>
+            </div>
+        </div>
+    </header>
+    <div class="top-wrapper">
+        <div class="vid-container">
+            <iframe
+                src="https://www.youtube.com/embed/tnsOrbljnK0?controls=0&autoplay=1&mute=1&playsinline=&playlist=tnsOrbljnK0&loop=1"></iframe>
+        </div>
+        <div class="container-top">
+            <h1>OFFICIAL PARTNER OF</h1>
+            <h1>CALL OF DUTY:</h1>
+            <h1>MW2</h1>
+            <p>We're happy to anounce that we are officialy partnering with Call of Duty.</p>
+            <p>Sign up now & redeem the PowerTech Operator Pack for free on all platforms.</p>
+            <div class="btn-wrapper">
+                <a href="#" class="btn signup">Sign up with Email</a>
+                <p>or</p>
+                <a href="#" class="btn discord"><span class="fab fa-discord"></span>Sign up with Discord</a>
+                <a href="#" class="btn twitter"><span class="fab fa-twitter"></span>Sign up with Twitter</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="subheading">
+            <p><span>Check Our Store___</span></p>
+        </div>
+        <div class="icon-container">
+            <p><span>Shop with PowerTech for all your needs</span></p>
+        </div>
+    </div>
+
+    <div class="choice-wrapper">
+        <div class="container">
+            <div class="choices">
+                <div class="choice">
+                    <div class="choice-icon">
+                        <img class="icon" src="https://i.imgur.com/2kfv7WH.png">
+                    </div>
+                    <p href=#choices class="btn choices-text"><span>Deals</span></p>
+                </div>
+                <div class="choice">
+                    <div class="choice-icon">
+                        <img class="icon" src="https://i.imgur.com/kdeC58W.png">
+                    </div>
+                    <p href=#choices class="btn choices-text"><span>Smartphones</span></p>
+                </div>
+                <div class="choice">
+                    <div class="choice-icon">
+                        <img class="icon" src="https://i.imgur.com/cwJAqfP.png">
+                    </div>
+                    <p href=#choices class="btn choices-text"><span>Laptop</span></p>
+                </div>
+                <div class="choice">
+                    <div class="choice-icon">
+                        <img class="icon" src="https://i.imgur.com/9VHZTt3.png">
+                    </div>
+                    <p href=#choices class="btn choices-text"><span>Desktop</span></p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="highlight-wrapper">
+        <div class="container">
+            <div class="subheading">
+                <p><span>Highlighted Products___</span></p>
+            </div>
+
+            <div class="highlights">
+                <div class="highlight">
+                    <div class="highlight-icon">
+                        <img class="highlight-img" src="https://i.imgur.com/AbVQwH1.png">
+                    </div>
+                    <h3 class="highlight-title">PowerViva 13" Slate OLED Marvel Edition</h3>
+                    <div class="price">
+                        <p class="price-start">Starting from</p>
+                        <h3 class="price-after">Rp.9.999.000</h3>
+                        <p class="price-before"><s>Rp.10.099.000</s></p>
+                        <p class="price-save">SAVE Rp100.000</p>
+                    </div>
+                    <div class="specification-list">
+                        <ul>
+                            <li>13.3 inch OLED HDR Display</li>
+                            <li>Touchscreen with 4096 Pressure-level PowerTech Pen 2.0 Support</li>
+                            <li>Perfect 2 in 1 device for work and multimedia</li>
+                            <li>Up to 32 GB memory</li>
+                        </ul>
+                        <br>
+                    </div>
+                    <p class="btn buy">Buy</p>
+                    <p class="btn learn">Learn More</p>
+                </div>
+
+                <div class="highlight">
+                    <div class="highlight-icon">
+                        <img class="highlight-img" src="https://i.imgur.com/cSeES2c.png">
+                    </div>
+                    <h3 class="highlight-title">Tech Flow X13 Theseus Pro (2022)</h3>
+                    <div class="price">
+                        <p class="price-start">Starting from</p>
+                        <h3 class="price-after">Rp.20.499.000</h3>
+                        <p class="price-before"><s>Rp.21.999.000</s></p>
+                        <p class="price-save">SAVE Rp.1.500.000</p>
+                    </div>
+                    <div class="specification-list">
+                        <ul>
+                            <li>Powerful and convertible : A dynamic 13” convertible form factor</li>
+                            <li>Newest AMD Ryzen 6000 Series with AMD Radeon 680M Graphics</li>
+                            <li>Portable eGPU boost graphics</li>
+                        </ul>
+                    </div>
+                    <br>
+                    <p class="btn buy">Buy</p>
+                    <p class="btn learn">Learn More</p>
+                </div>
+
+                <div class="highlight">
+                    <div class="highlight-icon">
+                        <img class="highlight-img" src="https://i.imgur.com/9GvYPOo.png">
+                    </div>
+                    <h3 class="highlight-title">ExpertPower E5 AiO 22 (E5202)</h3>
+                    <div class="price">
+                        <p class="price-start">Starting from</p>
+                        <h3 class="price-after">Rp.11.555.000</h3>
+                        <p class="price-before"><s>Rp.13.499.000</s></p>
+                        <p class="price-save">SAVE Rp.1.944.000</p>
+                    </div>
+                    <div class="specification-list">
+                        <ul>
+                            <li>Business Ready Design with Easy Upgrade, Vesa Mount Support</li>
+                            <li>Impressive Performance with 10nm Intel 11th Gen Processor</li>
+                            <li>Business Class Security and Connectivity</li>
+                        </ul>
+                    </div>
+                    <br>
+                    <br>
+                    <p class="btn buy">Buy</p>
+                    <p class="btn learn">Learn More</p>
+                </div>
+
+                <div class="highlight">
+                    <div class="highlight-icon">
+                        <img class="highlight-img" src="https://i.imgur.com/bSC2hPM.png">
+                    </div>
+                    <h3 class="highlight-title">Techno HQ8: Call of Duty Collaboration V3</h3>
+                    <div class="price">
+                        <p class="price-start">Starting from</p>
+                        <h3 class="price-after">Rp.3.499.000</h3>
+                        <p class="price-before"><s>Rp.3.604.000</s></p>
+                        <p class="price-save">SAVE Rp105.000</p>
+                    </div>
+                    <div class="specification-list">
+                        <ul>
+                            <li>Compact and Sleek Design: 5.9-inch compact, pocketsize design</li>
+                            <li>Dual rear cameras with punch-hole front camera</li>
+                            <li>4000mAh High-capacity Battery: Quick Charge 4.0 support</li>
+                        </ul>
+                    </div>
+                    <p class="btn buy">Buy</p>
+                    <p class="btn learn">Learn More</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="message-wrapper">
+            <div class="container">
+                <div class="heading">
+                    <!-- <h2>Ready to become an awesome programmer?</h2>
+                    <h3>Let's learn to code, learn to be creative!</h3> -->
+                </div>
+                <a href="#" class="btn message">Start Learning</a>
+            </div>
+            <div class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-coloumn">
+                            <h3>Beli dan lihat</h3>
+                            <ul>
+                                <li><a href="#">Mobile</a></li>
+                                <li><a href="#">Phone</a></li>
+                                <li><a href="#">Laptop</a></li>
+                                <li><a href="#">Others</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-coloumn">
+                            <h3>Support</h3>
+                            <ul>
+                                <li><a href="#">Check and Repair</a></li>
+                                <li><a href="#">Customer service</a></li>
+                                <li><a href="#">Product Registration</a></li>
+                                <li><a href="#">FAQ</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-coloumn">
+                            <h3>About us</h3>
+                            <ul>
+                                <li><a href="#">About Powertech</a></li>
+                                <li><a href="#">News</a></li>
+                                <li><a href="#">Investor relations</a></li>
+                                <li><a href="#">Powertech Global</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-coloumn">
+                            <h3>Follow us</h3>
+                            <div class="social-link">
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
